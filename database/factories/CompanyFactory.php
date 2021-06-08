@@ -31,8 +31,8 @@ class CompanyFactory extends Factory
         'address'=> $this->faker->address,
         'phone'=> $this->faker->phoneNumber,
         'website'=> $this->faker->domainName,
-        'logo'=>'avatar/man.jpg',
-        'cover_photo'=>'cover/tumblr-image-sizes-banner.png',
+        'logo'=>'man.png',
+        'cover_photo'=>'tumblr-image-sizes-banner.png',
         'slogan'=>'learn-earn and grow',
         'description'=> $this->faker->paragraph(rand(2,10))
         ];

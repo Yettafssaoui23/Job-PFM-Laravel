@@ -5,30 +5,30 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-info">{{ __('Inscription des demandeurs des emploi') }}</div>
+                <div class="card-header bg-info">{{ __('Inscription des Employeurs') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('emp.register') }}">
                         @csrf
 
-                        <input type="hidden" value="seeker" name="user_type">
+                        <input type="hidden" value="employer" name="user_type">
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom Complet') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom Entreprise') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('cname') ? ' is-invalid' : '' }}" name="cname" value="{{ old('cname') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('cname'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('cname') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 ßcol-form-label text-md-right">{{ __('Adresse E-mail') }}</label>
+                            <label for="email" class="col-md-4 ßcol-form-label text-md-right">{{ __('Adresse e-mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -40,23 +40,6 @@
                                 @endif
                             </div>
                         </div>
-
-
-                            <div class="form-group row">
-                            <label for="dob" class="col-md-4 ßcol-form-label text-md-right">{{ __('Date de naissance') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="text" id="datepicker" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required>
-
-                                @if ($errors->has('dob'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dob') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de Passe') }}</label>
@@ -80,26 +63,10 @@
                             </div>
                         </div>
 
-
-                            <div class="form-group row">
-                            <label for="dob" class="col-md-4 ßcol-form-label text-md-right">{{ __('Sexe') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="radio" name="gender" value="male" required="">Mâle
-                                <input type="radio" name="gender" value="female" >Femelle 
-                                @if ($errors->has('gender'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('gender') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-info">
-                                    {{ __('Register') }}
+                                    S'inscrire
                                 </button>
                             </div>
                         </div>
