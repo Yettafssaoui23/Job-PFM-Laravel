@@ -36,7 +36,11 @@ class JobFactory extends Factory
             'status'=>rand(0,1),
             'description'=>$this->faker->paragraph(rand(2,10)),
             'roles'=>$this->faker->text,
-            'last_date'=>$this->faker->DateTime
+            'last_date'=>$this->faker->DateTime,
+            'number_of_vacancy'=>rand(1,10),
+            'experience'=>rand(1,10),
+            'gender'=>$this->faker->randomElement(['mâle', 'femelle']),
+            'salary'=>rand(10000,50000)
         ];
     }
 }

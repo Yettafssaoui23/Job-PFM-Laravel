@@ -74,6 +74,50 @@
                 </span>
                  @endif
             </div>
+
+            <div class="form-group">
+                <label for="number_of_vacancy">Nombre de postes vacants :</label>
+                <input type="text" name="number_of_vacancy" class="form-control{{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}"  value="{{ $job->number_of_vacancy }}">
+                @if ($errors->has('number_of_vacancy'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                </span>
+                 @endif
+            </div>
+
+             <div class="form-group">
+                <label for="experience">Année d'expérience :</label>
+                <input type="text" name="experience" class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"  value="{{ $job->experience }}">
+                @if ($errors->has('experience'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('experience') }}</strong>
+                </span>
+                 @endif
+            </div>
+
+              <div class="form-group">
+                <label for="gender">Sexe :</label>
+                
+                 <select class="form-control" name="gender">
+                    <option value="aucun"{{$job->gender=='any'?'selected':''}}>Aucun</option>
+                    <option value="male"{{$job->gender=='male'?'selected':''}}>mâle</option>
+                    <option value="femelle"{{$job->gender=='female'?'selected':''}}>femelle</option>
+                </select>
+            </div>
+
+               <div class="form-group">
+                <label for="type">Salaire Par An :</label>
+                <select class="form-control" name="salary">
+                    <option value="negotiable">Négociable</option>
+                    <option value="2000-5000">2000-5000</option>
+                    <option value="5000-10000">5000-10000</option>
+                    <option value="10000-20000">10000-20000</option>
+                    <option value="30000-40000">30000-40000</option>
+                    <option value="50000-60000">50000-60000</option>
+                    <option value="60000 plus">60000 et plus</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="type">Type : </label>
                 <select class="form-control" name="type">

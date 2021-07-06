@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployerRegisterController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChartJsController;
+use App\Models\Job;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('demo','demo');
 
 // Les Emplois
 
@@ -51,12 +58,18 @@ Route::post('company/coverphoto',[CompanyController::class,'coverPhoto'])->name(
 
 Route::post('company/logo',[CompanyController::class,'companyLogo'])->name('company.logo');
 
+Route::get('/companies',[CompanyController::class,'company'])->name('company');
+
 // Accueil Section
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+Route::get('full-calender', [FullCalenderController::class, 'index']);
+
+Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 
 // User Profile
 
@@ -77,3 +90,63 @@ Route::view('employer/register','auth.employer-register')->name('employer.regist
 Route::post('employer/register',[EmployerRegisterController::class,'employerRegister'])->name('emp.register');
 
 Route::post('/applications/{id}',[JobController::class,'apply'])->name('apply');
+
+//Enregistrer les Emplois
+
+Route::post('/save/{id}',[FavouriteController::class,'saveJob']);
+
+Route::post('/unsave/{id}',[FavouriteController::class,'unSaveJob']);
+
+//categories
+Route::get('/category/{id}/jobs',[CategoryController::class,'index'])->name('category.index');
+
+//Chercher 
+Route::get('messages/{id}',[MessageController::class,'create'])->name('message');
+
+ Route::get('jobs/search',function(){
+
+        $keyword = request('keyword');
+        $users = Job::where('title','like','%'.$keyword.'%')
+                ->orWhere('position','like','%'.$keyword.'%')
+                ->limit(5)->get();
+        return response()->json($users);
+ });
+
+
+// admin
+
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('admin');
+
+Route::get('/dashboard/state',[DashboardController::class,'state'])->middleware('admin');
+
+Route::get('/dashboard/create',[DashboardController::class,'create'])->middleware('admin');
+
+Route::post('/dashboard/create',[DashboardController::class,'store'])->name('post.store')->middleware('admin');
+
+Route::post('/dashboard/destroy',[DashboardController::class,'destroy'])->name('post.delete')->middleware('admin');
+
+Route::get('/dashboard/{id}/edit',[DashboardController::class,'edit'])->name('post.edit')->middleware('admin');
+
+Route::post('/dashboard/{id}/update',[DashboardController::class,'update'])->name('post.update')->middleware('admin');
+
+Route::get('/dashboard/trash',[DashboardController::class,'trash'])->middleware('admin');
+
+Route::get('/dashboard/{id}/trash',[DashboardController::class,'restore'])->name('post.restore')->middleware('admin');
+
+Route::get('/dashboard/{id}/toggle',[DashboardController::class,'toggle'])->name('post.toggle')->middleware('admin');
+
+Route::get('/posts/{id}/{slug}',[DashboardController::class,'show'])->name('post.show');
+
+Route::get('/dashboard/jobs',[DashboardController::class,'getAllJobs'])->middleware('admin');
+
+Route::get('/dashboard/{id}/jobs',[DashboardController::class,'changeJobStatus'])->name('job.status')->middleware('admin');
+
+//Témoignages
+
+Route::get('testimonial',[TestimonialController::class,'index'])->middleware('admin');
+
+Route::get('testimonial/create',[TestimonialController::class,'create'])->middleware('admin');
+
+Route::post('testimonial/create',[TestimonialController::class,'store'])->name('testimonial.store')->middleware('admin');
+
+

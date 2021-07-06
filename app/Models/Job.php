@@ -12,7 +12,7 @@ class Job extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','company_id','title','slug','description','roles','category_id','position','address','type','status','last_date'];
+    protected $fillable = ['user_id','company_id','title','slug','description','roles','category_id','position','address','type','status','last_date','number_of_vacancy','experience','gender','salary'];
 
     public function getRouteKeyName(){
 		return 'slug';
@@ -33,7 +33,6 @@ class Job extends Model
     public function favorites(){
         return $this->belongsToMany(Job::class,'favourites','job_id','user_id')->withTimeStamps();
     }
-    
     public function checkSaved(){
         return DB::table('favourites')->where('user_id',auth()->user()->id)->where('job_id',$this->id)->exists();
     }

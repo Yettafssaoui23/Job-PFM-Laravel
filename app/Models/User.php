@@ -9,8 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
 use App\Models\Company;
 use App\Models\Job;
+use App\Models\Role;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -54,5 +56,9 @@ class User extends Authenticatable
     }
     public function favorites(){
         return $this->belongsToMany(Job::class,'favourites','user_id','job_id')->withTimeStamps();
+    }
+
+    public function roles(){
+        return $this->belongsToMany(Role::class);
     }
 }

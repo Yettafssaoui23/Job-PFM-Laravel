@@ -96,10 +96,10 @@
         <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
-                <div class="card-header bg-info">Update coverletter</div>
+                <div class="card-header bg-info">Mettre à jour Photo Couverture</div>
                 <div class="card-body">
                     <input type="file" class="form-control" name="cover_photo"><br>
-                    <button class="btn btn-info float-right" type="submit">Update</button>
+                    <button class="btn btn-info float-right" type="submit">Mettre à jour</button>
                 </div>
             </div>
         </form>

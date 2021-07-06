@@ -23,7 +23,6 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
-        
         return [
         'user_id' => User::all()->random()->id,
         'cname'=> $name = $this->faker->company,
@@ -31,8 +30,8 @@ class CompanyFactory extends Factory
         'address'=> $this->faker->address,
         'phone'=> $this->faker->phoneNumber,
         'website'=> $this->faker->domainName,
-        'logo'=>'man.png',
-        'cover_photo'=>'tumblr-image-sizes-banner.png',
+        'logo'=>'icons8-apple-logo-128.png',
+        'cover_photo'=>'com.jpg',
         'slogan'=>'learn-earn and grow',
         'description'=> $this->faker->paragraph(rand(2,10))
         ];

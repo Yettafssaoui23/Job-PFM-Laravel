@@ -33,7 +33,7 @@
             
             <div class="form-group">
                 <label for="description">Description :</label>
-            <textarea name="description" id="summernote" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}</textarea>
+            <textarea name="description" id="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ old('description') }}</textarea>
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label for="role">Rôle :</label>
-            <textarea name="roles"  class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}</textarea>
+            <textarea name="roles" id="roles" class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}</textarea>
             @if ($errors->has('roles'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('roles') }}</strong>
@@ -68,8 +68,8 @@
                         <strong>{{ $errors->first('position') }}</strong>
                     </span>
                 @endif
-
             </div>
+
             <div class="form-group">
                 <label for="address">Adresse :</label>
                 <input type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"  value="{{ old('address') }}">
@@ -79,12 +79,56 @@
                 </span>
                  @endif
             </div>
+
+            <div class="form-group">
+                <label for="number_of_vacancy">Nombre de postes vacants :</label>
+                <input type="text" name="number_of_vacancy" class="form-control{{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}"  value="{{ old('number_of_vacancy') }}">
+                @if ($errors->has('number_of_vacancy'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                </span>
+                 @endif
+            </div>
+
+             <div class="form-group">
+                <label for="experience">Année d'expérience :</label>
+                <input type="text" name="experience" class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"  value="{{ old('experience') }}">
+                @if ($errors->has('experience'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('experience') }}</strong>
+                </span>
+                 @endif
+            </div>
+
+              <div class="form-group">
+                <label for="gender">Sexe :</label>
+                <select class="form-control" name="gender">
+                    <option value="mâle">mâle</option>
+                    <option value="femelle">femelle</option>
+                </select>
+            </div>
+
+               <div class="form-group">
+                <label for="type">Salaire Par An :</label>
+                <select class="form-control" name="salary">
+                    <option value="negotiable">Négociable</option>
+                    <option value="2000-5000">2000-5000</option>
+                    <option value="5000-10000">5000-10000</option>
+                    <option value="10000-20000">10000-20000</option>
+                    <option value="30000-40000">30000-40000</option>
+                    <option value="50000-60000">50000-60000</option>
+                    <option value="60000 plus">60000 et plus</option>
+                </select>
+            </div>
+
+
+
             <div class="form-group">
                 <label for="type">Type :</label>
                 <select class="form-control" name="type">
-                    <option value="fulltime">fulltime</option>
-                    <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
+                    <option value="fulltime">Temps Plein</option>
+                    <option value="parttime">temps partiel</option>
+                    <option value="casual">Pas de Contrat</option>
                 </select>
             </div>
             <div class="form-group">
@@ -119,3 +163,4 @@
 </div>
 
 @endsection
+

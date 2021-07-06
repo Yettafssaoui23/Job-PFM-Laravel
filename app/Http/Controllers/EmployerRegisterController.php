@@ -26,8 +26,7 @@ class EmployerRegisterController extends Controller
                 'user_id' => $user->id,
                 'cname' => request('cname'),
                 'slug'=>str_slug(request('cname'))
-
             ]);
-        return redirect()->to('/login');   
+        return redirect()->back()->with('message','Veuillez vérifier votre e-mail en cliquant sur le lien envoyé à votre adresse e-mail');   
     }
 }
