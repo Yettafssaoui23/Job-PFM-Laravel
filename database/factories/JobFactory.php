@@ -26,21 +26,21 @@ class JobFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'company_id'=> Company::all()->random()->id,
-            'title'=>$title=$this->faker->text,
-            'slug'=>str_slug($title),
-            'position'=>$this->faker->jobTitle,
-            'address'=>$this->faker->address,
-            'category_id'=> rand(1,5),
-            'type'=>'fulltime',
-            'status'=>rand(0,1),
-            'description'=>$this->faker->paragraph(rand(2,10)),
-            'roles'=>$this->faker->text,
-            'last_date'=>$this->faker->DateTime,
-            'number_of_vacancy'=>rand(1,10),
-            'experience'=>rand(1,10),
-            'gender'=>$this->faker->randomElement(['mâle', 'femelle']),
-            'salary'=>rand(10000,50000)
+            'company_id' => Company::all()->random()->id,
+            'title' => $title = $this->faker->text,
+            'slug' => str_slug($title),
+            'position' => $this->faker->jobTitle,
+            'address' => $this->faker->address,
+            'category_id' => rand(1, 5),
+            'type' => 'fulltime',
+            'status' => rand(0, 1),
+            'description' => $this->faker->paragraph(rand(2, 10)),
+            'roles' => $this->faker->text,
+            'last_date' => $this->faker->DateTime,
+            'number_of_vacancy' => rand(1, 10),
+            'experience' => rand(1, 10),
+            'gender' => $this->faker->randomElement(['mâle', 'femelle']),
+            'salary' => rand(10000, 50000)
         ];
     }
 }

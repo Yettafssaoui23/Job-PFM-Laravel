@@ -1,10 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div id="map">
-        
+    <div class="container">
+        <div id="map">
+
+        </div>
     </div>
-</div>
-    
 @endsection

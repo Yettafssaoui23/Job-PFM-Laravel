@@ -10,13 +10,15 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cname', 'user_id', 'slug','address','phone','website','logo','cover_photo','slogan','description'
+        'cname', 'user_id', 'slug', 'address', 'phone', 'website', 'logo', 'cover_photo', 'slogan', 'description'
     ];
-    
-    public function jobs(){
-    	return $this->hasMany('App\Models\Job');
+
+    public function jobs()
+    {
+        return $this->hasMany('App\Models\Job');
     }
-    public function getRouteKeyName(){
-		return 'slug';
-	}
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

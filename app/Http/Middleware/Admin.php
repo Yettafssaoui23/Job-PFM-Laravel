@@ -18,8 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         $adminRole = Auth::user()->roles()->pluck('name');
-        if($adminRole->contains('admin'))
-        {
+        if ($adminRole->contains('admin')) {
             return $next($request);
         }
     }

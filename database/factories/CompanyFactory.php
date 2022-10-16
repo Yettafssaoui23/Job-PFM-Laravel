@@ -24,16 +24,16 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-        'user_id' => User::all()->random()->id,
-        'cname'=> $name = $this->faker->company,
-        'slug'=> Str::slug($name),
-        'address'=> $this->faker->address,
-        'phone'=> $this->faker->phoneNumber,
-        'website'=> $this->faker->domainName,
-        'logo'=>'icons8-apple-logo-128.png',
-        'cover_photo'=>'com.jpg',
-        'slogan'=>'learn-earn and grow',
-        'description'=> $this->faker->paragraph(rand(2,10))
+            'user_id' => User::all()->random()->id,
+            'cname' => $name = $this->faker->company,
+            'slug' => Str::slug($name),
+            'address' => $this->faker->address,
+            'phone' => $this->faker->phoneNumber,
+            'website' => $this->faker->domainName,
+            'logo' => 'icons8-apple-logo-128.png',
+            'cover_photo' => 'com.jpg',
+            'slogan' => 'learn-earn and grow',
+            'description' => $this->faker->paragraph(rand(2, 10))
         ];
     }
 }

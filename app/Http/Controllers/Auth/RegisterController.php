@@ -72,10 +72,10 @@ class RegisterController extends Controller
             'user_type' => request('user_type'),
         ]);
         Profile::create([
-                'user_id' => $user->id,
-                'gender' => request('gender'),
-                'dob'=>request('dob')
-            ]);
+            'user_id' => $user->id,
+            'gender' => request('gender'),
+            'dob' => request('dob')
+        ]);
         return $user;
     }
 }
